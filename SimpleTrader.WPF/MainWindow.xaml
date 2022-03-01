@@ -11,17 +11,19 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
+  
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="0">123</TextBlock>
-        <Grid Grid.Row="1">
+
+        <Grid Grid.Row="0">
             <controls:NavigationBar DataContext="{Binding Navigator}"/>
         </Grid>
-        <ContentControl Grid.Row="2" Content="{Binding Navigator.CurrentViewModel}"/>
-        <TextBlock Grid.Row="3">Row 3    456</TextBlock>
+
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+            <ContentControl Content="{Binding Navigator.CurrentViewModel}"/>    
+        </ScrollViewer>
+        
 
 
 
