@@ -23,7 +23,7 @@ namespace SimpleTrader.WPF
     /// </summary>
     public partial class App : Application
     {
-        protected override async void OnStartup(StartupEventArgs e)
+        protected override void OnStartup(StartupEventArgs e)
         {
             //測試 股票API 能否讀到股價
             //new MajorIndexService().GetMajorIndex(Domain.Models.MajorIndexType.DowJones).ContinueWith((task) =>
@@ -51,13 +51,14 @@ namespace SimpleTrader.WPF
             services.AddSingleton<IBuyStockService, BuyStockService>();
             services.AddSingleton<IMajorIndexService, MajorIndexService>();
 
-            services.AddSingleton<ISimpleTraderViewModelAbstractFactory, SimpleTraderViewModelAbstractFactory>();
+            services.AddSingleton<IRootSimpleTraderViewModelFactory, RootSimpleTraderViewModelFactory>();
             services.AddSingleton<ISimpleTraderViewModelFactory<HomeViewModel>, HomeViewModelFactory>();
             services.AddSingleton<ISimpleTraderViewModelFactory<PortfolioViewModel>, PortfolioViewModelFactory>();
             services.AddSingleton<ISimpleTraderViewModelFactory<MajorIndexListingViewModel>, MajorIndexListingViewModelFactory>();
 
             services.AddScoped<INavigator, Navigator>();
             services.AddScoped<MainViewModel>();
+            services.AddScoped<BuyViewModel>();
 
             return services.BuildServiceProvider();
         }
