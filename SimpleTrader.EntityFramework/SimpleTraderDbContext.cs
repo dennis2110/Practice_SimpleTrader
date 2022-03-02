@@ -7,13 +7,13 @@ using System.Text;
 
 namespace SimpleTrader.EntityFramework
 {
-    public class SimpleTranderDbContext : DbContext
+    public class SimpleTraderDbContext : DbContext
     {
         public DbSet<User> Users { get; set; }
         public DbSet<Account> Accounts { get; set; }
         public DbSet<AssetTransaction> AssetTransactions { get; set; }
 
-        public SimpleTranderDbContext(DbContextOptions options) : base(options)
+        public SimpleTraderDbContext(DbContextOptions options) : base(options)
         {
 
         }

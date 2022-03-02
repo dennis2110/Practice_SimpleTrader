@@ -10,16 +10,16 @@ namespace SimpleTrader.EntityFramework.Services.Common
 {
     public class NonQueryDataService<T> where T : DomainObject
     {
-        private readonly SimpleTranderDbContextFactory _contextFactory;
+        private readonly SimpleTraderDbContextFactory _contextFactory;
 
-        public NonQueryDataService(SimpleTranderDbContextFactory contextFactory)
+        public NonQueryDataService(SimpleTraderDbContextFactory contextFactory)
         {
             _contextFactory = contextFactory;
         }
 
         public async Task<T> Create(T entity)
         {
-            using (SimpleTranderDbContext context = _contextFactory.CreateDbContext())
+            using (SimpleTraderDbContext context = _contextFactory.CreateDbContext())
             {
                 EntityEntry<T> createdResult = await context.Set<T>().AddAsync(entity);
                 await context.SaveChangesAsync();
@@ -30,7 +30,7 @@ namespace SimpleTrader.EntityFramework.Services.Common
 
         public async Task<bool> Delete(int id)
         {
-            using (SimpleTranderDbContext context = _contextFactory.CreateDbContext())
+            using (SimpleTraderDbContext context = _contextFactory.CreateDbContext())
             {
                 T entity = await context.Set<T>().FirstOrDefaultAsync((e) => e.Id == id);
                 context.Set<T>().Remove(entity);
@@ -41,7 +41,7 @@ namespace SimpleTrader.EntityFramework.Services.Common
         }
         public async Task<T> Update(int id, T entity)
         {
-            using (SimpleTranderDbContext context = _contextFactory.CreateDbContext())
+            using (SimpleTraderDbContext context = _contextFactory.CreateDbContext())
             {
                 entity.Id = id;
                 context.Set<T>().Update(entity);

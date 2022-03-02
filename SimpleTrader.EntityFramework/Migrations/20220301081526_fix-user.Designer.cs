@@ -10,8 +10,8 @@ using SimpleTrader.EntityFramework;
 namespace SimpleTrader.EntityFramework.Migrations
 {
     [DbContext(typeof(SimpleTraderDbContext))]
-    [Migration("20220122004023_Add_Initial")]
-    partial class Add_Initial
+    [Migration("20220301081526_fix-user")]
+    partial class fixuser
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -48,7 +48,7 @@ namespace SimpleTrader.EntityFramework.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("AccoubtId")
+                    b.Property<int?>("AccountId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("DateProcessed")
@@ -62,7 +62,7 @@ namespace SimpleTrader.EntityFramework.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AccoubtId");
+                    b.HasIndex("AccountId");
 
                     b.ToTable("AssetTransactions");
                 });
@@ -80,7 +80,7 @@ namespace SimpleTrader.EntityFramework.Migrations
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Password")
+                    b.Property<string>("PasswordHash")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Username")
@@ -100,11 +100,11 @@ namespace SimpleTrader.EntityFramework.Migrations
 
             modelBuilder.Entity("SimpleTrader.Domain.Models.AssetTransaction", b =>
                 {
-                    b.HasOne("SimpleTrader.Domain.Models.Account", "Accoubt")
+                    b.HasOne("SimpleTrader.Domain.Models.Account", "Account")
                         .WithMany("AssetTransactions")
-                        .HasForeignKey("AccoubtId");
+                        .HasForeignKey("AccountId");
 
-                    b.OwnsOne("SimpleTrader.Domain.Models.Stock", "Stock", b1 =>
+                    b.OwnsOne("SimpleTrader.Domain.Models.Asset", "Asset", b1 =>
                         {
                             b1.Property<int>("AssetTransactionId")
                                 .ValueGeneratedOnAdd()

@@ -9,7 +9,7 @@ using SimpleTrader.EntityFramework;
 
 namespace SimpleTrader.EntityFramework.Migrations
 {
-    [DbContext(typeof(SimpleTranderDbContext))]
+    [DbContext(typeof(SimpleTraderDbContext))]
     [Migration("20220224022615_fix-assettransaction")]
     partial class fixassettransaction
     {
