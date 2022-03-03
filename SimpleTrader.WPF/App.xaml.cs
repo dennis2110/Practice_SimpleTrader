@@ -36,10 +36,6 @@ namespace SimpleTrader.WPF
 
             IServiceProvider serviceProvider = CreateServiceProvider();
 
-            IAuthenticationService authentication = serviceProvider.GetRequiredService<IAuthenticationService>();
-            authentication.Register("dennis@hotmail.com", "123", "456", "456");
-            authentication.Login("123", "456");
-
             Window window = serviceProvider.GetRequiredService<MainWindow>();
             window.Show();
 

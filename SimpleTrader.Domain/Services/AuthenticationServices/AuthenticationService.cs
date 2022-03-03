@@ -21,6 +21,7 @@ namespace SimpleTrader.Domain.Services.AuthenticationServices
 
         public async Task<Account> Login(string username, string password)
         {
+            string asd = username;
             Account storedAccount = await _accountService.GetByUsername(username);
 
             //if (storedAccount == null)
