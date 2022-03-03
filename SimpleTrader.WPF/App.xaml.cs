@@ -45,7 +45,7 @@ namespace SimpleTrader.WPF
         {
             IServiceCollection services = new ServiceCollection();
 
-            services.AddSingleton<SimpleTranderDbContextFactory>();
+            services.AddSingleton<SimpleTraderDbContextFactory>();
             services.AddSingleton<IDataService<Account>, AccountDataService>();
             services.AddSingleton<IStockPriceService, StockPriceService>();
             services.AddSingleton<IBuyStockService, BuyStockService>();

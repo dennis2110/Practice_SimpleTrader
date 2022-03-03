@@ -8,7 +8,7 @@ using SimpleTrader.EntityFramework;
 
 namespace SimpleTrader.EntityFramework.Migrations
 {
-    [DbContext(typeof(SimpleTranderDbContext))]
+    [DbContext(typeof(SimpleTraderDbContext))]
     partial class SimpleTranderDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

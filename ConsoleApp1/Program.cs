@@ -11,7 +11,7 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            IDataService<User> userService = new GenericDataService<User>(new SimpleTranderDbContextFactory());
+            IDataService<User> userService = new GenericDataService<User>(new SimpleTraderDbContextFactory());
             //Console.WriteLine(userService.Delete(1).Result);                   //output:SimpleTrader.Domain.Models.User 
             //Console.WriteLine(userService.Update(1, new User() { Username = "TestUser_update"}).Result);                   //output:SimpleTrader.Domain.Models.User 
             //Console.WriteLine(userService.Get(1).Result);                   //output:SimpleTrader.Domain.Models.User 

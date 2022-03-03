@@ -12,10 +12,10 @@ namespace SimpleTrader.EntityFramework.Services
 {
     public class AccountDataService : IDataService<Account>
     {
-        private readonly SimpleTranderDbContextFactory _contextFactory;
+        private readonly SimpleTraderDbContextFactory _contextFactory;
         private readonly NonQueryDataService<Account> _nonQueryDataService;
 
-        public AccountDataService(SimpleTranderDbContextFactory contextFactory)
+        public AccountDataService(SimpleTraderDbContextFactory contextFactory)
         {
             _contextFactory = contextFactory;
             _nonQueryDataService = new NonQueryDataService<Account>(contextFactory);
@@ -32,7 +32,7 @@ namespace SimpleTrader.EntityFramework.Services
 
         public async Task<Account> Get(int id)
         {
-            using (SimpleTranderDbContext context = _contextFactory.CreateDbContext())
+            using (SimpleTraderDbContext context = _contextFactory.CreateDbContext())
             {
                 Account entity = await context.Accounts.Include(a => a.AssetTransactions).FirstOrDefaultAsync((e) => e.Id == id);
                 return entity;
@@ -41,7 +41,7 @@ namespace SimpleTrader.EntityFramework.Services
 
         public async Task<IEnumerable<Account>> GetAll()
         {
-            using (SimpleTranderDbContext context = _contextFactory.CreateDbContext())
+            using (SimpleTraderDbContext context = _contextFactory.CreateDbContext())
             {
                 IEnumerable<Account> entities = await context.Accounts.Include(a => a.AssetTransactions).ToListAsync();
                 return entities;

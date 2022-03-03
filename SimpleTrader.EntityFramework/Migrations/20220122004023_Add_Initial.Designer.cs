@@ -9,7 +9,7 @@ using SimpleTrader.EntityFramework;
 
 namespace SimpleTrader.EntityFramework.Migrations
 {
-    [DbContext(typeof(SimpleTranderDbContext))]
+    [DbContext(typeof(SimpleTraderDbContext))]
     [Migration("20220122004023_Add_Initial")]
     partial class Add_Initial
     {

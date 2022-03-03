@@ -6,11 +6,11 @@ using System.Text;
 
 namespace SimpleTrader.EntityFramework
 {
-    public class SimpleTranderDbContextFactory : IDesignTimeDbContextFactory<SimpleTranderDbContext>
+    public class SimpleTraderDbContextFactory : IDesignTimeDbContextFactory<SimpleTraderDbContext>
     {
-        public SimpleTranderDbContext CreateDbContext(string[] args = null)
+        public SimpleTraderDbContext CreateDbContext(string[] args = null)
         {
-            var options = new DbContextOptionsBuilder<SimpleTranderDbContext>();
+            var options = new DbContextOptionsBuilder<SimpleTraderDbContext>();
 
             //SQL Server
             options.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=SimpleTraderDB;Trusted_Connection=True;");
@@ -18,7 +18,7 @@ namespace SimpleTrader.EntityFramework
             //SQLite
             //options.UseSqlite("Data Source=SimpleTraderData.db");
 
-            return new SimpleTranderDbContext(options.Options);
+            return new SimpleTraderDbContext(options.Options);
         }
     }
 }
