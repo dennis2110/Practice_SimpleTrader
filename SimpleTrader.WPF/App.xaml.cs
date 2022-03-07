@@ -36,9 +36,9 @@ namespace SimpleTrader.WPF
             //IBuyStockService buyStockService = serviceProvider.GetRequiredService<IBuyStockService>();
 
             IServiceProvider serviceProvider = CreateServiceProvider();
-            IAuthenticationService authenticationService = serviceProvider.GetRequiredService<IAuthenticationService>();
+            //IAuthenticationService authenticationService = serviceProvider.GetRequiredService<IAuthenticationService>();
             //authenticationService.Register("dennis@gmail.com", "dennis", "123", "123");
-            authenticationService.Login("dennis","123");
+            //authenticationService.Login("dennis","123");
 
             Window window = new MainWindow();
             window.DataContext = serviceProvider.GetRequiredService<MainViewModel>();

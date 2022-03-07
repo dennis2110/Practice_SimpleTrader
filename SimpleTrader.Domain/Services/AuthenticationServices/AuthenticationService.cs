@@ -23,6 +23,11 @@ namespace SimpleTrader.Domain.Services.AuthenticationServices
         {
             Account storedAccount = await _accountService.GetByUsername(username);
 
+            if(storedAccount == null)
+            {
+                throw new UserNotFoundException(username);
+            }
+
             PasswordVerificationResult passwordReault = _passwordHasher.VerifyHashedPassword(storedAccount.AccountHolder.PasswordHash, password);
 
             if(passwordReault != PasswordVerificationResult.Success)
@@ -45,7 +50,7 @@ namespace SimpleTrader.Domain.Services.AuthenticationServices
             Account emailAccount = await _accountService.GetByEmail(email);
             if(emailAccount != null)
             {
-                result = RegistrationResult.PasswordsDoNotMatch;
+                result = RegistrationResult.EmailAlreadyExists;
             }
 
             Account usernameAccount = await _accountService.GetByUsername(username);
