@@ -23,6 +23,10 @@
                 <view:BuyView/>
             </DataTemplate>
 
+            <DataTemplate DataType="{x:Type viewmodels:LoginViewModel}">
+                <view:LoginView LoginCommand="{Binding LoginCommand}"/>
+            </DataTemplate>
+
 
         </ResourceDictionary>
     </Application.Resources>
