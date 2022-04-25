@@ -12,13 +12,13 @@ namespace SimpleTrader.WPF.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
-        private readonly IRootSimpleTraderViewModelFactory _viewModelFactory;
+        private readonly ISimpleTraderViewModelFactory _viewModelFactory;
         public INavigator Navigator { get; set; } // 實例 INavigator 為 Navigator ，讓 MainWindow.xaml 可以 {Binding Navigator}
         public IAuthenticator Authenticator { get; }
         public ICommand UpdateCurrentViewModelCommand { get; }
 
         public MainViewModel(INavigator navigator, IAuthenticator authenticator,
-                             IRootSimpleTraderViewModelFactory viewModelFactory)
+                             ISimpleTraderViewModelFactory viewModelFactory)
         {
             Navigator = navigator;
             Authenticator = authenticator;
