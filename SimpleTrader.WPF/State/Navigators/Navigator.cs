@@ -10,7 +10,7 @@ using SimpleTrader.WPF.ViewModels.Factories;
 
 namespace SimpleTrader.WPF.State.Navigators
 {
-    public class Navigator : ObservableObject, INavigator // 定義 Navigator 類別 ，該類別繼承 INavigator 介面
+    public class Navigator : INavigator // 定義 Navigator 類別 ，該類別繼承 INavigator 介面
     {
         private ViewModelBase _currentViewModel;
         public ViewModelBase CurrentViewModel 
@@ -22,8 +22,10 @@ namespace SimpleTrader.WPF.State.Navigators
             set
             {
                 _currentViewModel = value;
-                OnPropertyChanged(nameof(CurrentViewModel));
+                StateChanged?.Invoke();
             }
         }
+
+        public event Action StateChanged;
     }
 }
