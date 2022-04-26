@@ -35,7 +35,7 @@ namespace SimpleTrader.WPF.Commands
             try
             {
                 Account account = await _buyStockService.BuyStock(_accountStore.CurrentAccount, _buyViewModel.Symbol, _buyViewModel.SharesToBuy);
-
+                
                 _accountStore.CurrentAccount = account;
             }
             catch (Exception e)
