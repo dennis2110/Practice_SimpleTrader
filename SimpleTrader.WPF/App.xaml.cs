@@ -100,6 +100,7 @@ namespace SimpleTrader.WPF
             services.AddSingleton<AssetStore>();
             services.AddScoped<MainViewModel>();
             services.AddScoped<BuyViewModel>();
+            services.AddScoped<MessageViewModel>();
 
             return services.BuildServiceProvider();
         }

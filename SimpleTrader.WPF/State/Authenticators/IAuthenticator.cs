@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using SimpleTrader.Domain.Exceptions;
 
 namespace SimpleTrader.WPF.State.Authenticators
 {
@@ -33,8 +34,7 @@ namespace SimpleTrader.WPF.State.Authenticators
         /// <exception cref="UserNotFoundException">Thrown if the user does not exist.</exception>
         /// <exception cref="InvalidPasswordException">Thrown if the password is invalid.</exception>
         /// <exception cref="Exception">Thrown if the login fails.</exception>
-        //Task Login(string username, string password);
-        Task <bool>Login(string username, string password);
+        Task Login(string username, string password);
 
         void Logout();
     }
