@@ -11,14 +11,19 @@ namespace SimpleTrader.FinancialModelingPrepAPI.Services
 {
     public class MajorIndexService : IMajorIndexService
     {
+        private readonly FinancialModelingPrepHttpClientFactory _httpClientFactory;
+
+        public MajorIndexService(FinancialModelingPrepHttpClientFactory httpClientFactory)
+        {
+            _httpClientFactory = httpClientFactory;
+        }
         public async Task<MajorIndex> GetMajorIndex(MajorIndexType indexType)
         {
-            
-            using(FinancialModelingPrepHttpClient client = new FinancialModelingPrepHttpClient())
+            using(FinancialModelingPrepHttpClient client = _httpClientFactory.CreateHttpClient())
             {
-                string uri = "majors-indexes/" + GetUriSuffix(indexType) + "?apikey=d12491f08d6e2153e904f01b3760de35";
+                string uri = "majors-indexes/" + GetUriSuffix(indexType);
 
-                //https://financialmodelingprep.com//api/v3/majors-indexes/.DJI
+                
                 //"https://financialmodelingprep.com/api/v3/majors-indexes/.DJI?apikey=d12491f08d6e2153e904f01b3760de35"
                 //HttpResponseMessage response = await client.GetAsync(uri);
                 //string jsonResponse = await response.Content.ReadAsStringAsync();
