@@ -6,6 +6,7 @@ using SimpleTrader.Domain.Services.AuthenticationServices;
 using SimpleTrader.Domain.Services.TransactionService;
 using SimpleTrader.EntityFramework;
 using SimpleTrader.EntityFramework.Services;
+using SimpleTrader.FinancialModelingPrepAPI;
 using SimpleTrader.FinancialModelingPrepAPI.Services;
 using SimpleTrader.WPF.State.Accounts;
 using SimpleTrader.WPF.State.Assets;
@@ -52,6 +53,9 @@ namespace SimpleTrader.WPF
         private IServiceProvider CreateServiceProvider()
         {
             IServiceCollection services = new ServiceCollection();
+
+            string apiKey = ConfigurationManager.AppSettings.Get("financeApiKey");
+            services.AddSingleton<FinancialModelingPrepHttpClientFactory>(new FinancialModelingPrepHttpClientFactory(apiKey));
 
             services.AddSingleton<SimpleTraderDbContextFactory>();
             services.AddSingleton<IAuthenticationService, AuthenticationService>();
@@ -100,7 +104,6 @@ namespace SimpleTrader.WPF
             services.AddSingleton<AssetStore>();
             services.AddScoped<MainViewModel>();
             services.AddScoped<BuyViewModel>();
-            services.AddScoped<MessageViewModel>();
 
             return services.BuildServiceProvider();
         }
