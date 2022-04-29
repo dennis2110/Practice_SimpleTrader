@@ -14,11 +14,11 @@ using System.Windows.Shapes;
 namespace SimpleTrader.WPF.Views
 {
     /// <summary>
-    /// LoginView.xaml 的互動邏輯
+    /// RegisterView.xaml 的互動邏輯
     /// </summary>
-    public partial class LoginView : UserControl
+    public partial class RegisterView : UserControl
     {
-        public LoginView()
+        public RegisterView()
         {
             InitializeComponent();
         }
