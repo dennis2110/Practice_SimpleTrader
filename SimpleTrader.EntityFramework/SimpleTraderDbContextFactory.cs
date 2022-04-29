@@ -14,13 +14,14 @@ namespace SimpleTrader.EntityFramework
         {
             _connectionString = connectionString;
         }
-
-        public SimpleTraderDbContext CreateDbContext()
+        public SimpleTraderDbContext CreateDbContext(string[] args = null)
         {
-            var options = new DbContextOptionsBuilder<SimpleTraderDbContext>();
+            DbContextOptionsBuilder<SimpleTraderDbContext> options = new DbContextOptionsBuilder<SimpleTraderDbContext>();
+            options.UseSqlServer(_connectionString);
+
 
             //SQL Server
-            options.UseSqlServer(_connectionString);
+            //options.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=SimpleTraderDB;Trusted_Connection=True;");
 
             //SQLite
             //options.UseSqlite("Data Source=SimpleTraderData.db");
