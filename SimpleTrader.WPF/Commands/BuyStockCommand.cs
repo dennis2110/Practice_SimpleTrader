@@ -1,6 +1,6 @@
 ﻿using SimpleTrader.Domain.Exceptions;
 using SimpleTrader.Domain.Models;
-using SimpleTrader.Domain.Services.TransactionService;
+using SimpleTrader.Domain.Services.TransactionServices;
 using SimpleTrader.WPF.State.Accounts;
 using SimpleTrader.WPF.ViewModels;
 using System;

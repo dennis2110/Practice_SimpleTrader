@@ -1,5 +1,5 @@
 ﻿using SimpleTrader.Domain.Services;
-using SimpleTrader.Domain.Services.TransactionService;
+using SimpleTrader.Domain.Services.TransactionServices;
 using SimpleTrader.WPF.Commands;
 using SimpleTrader.WPF.State.Accounts;
 using System;

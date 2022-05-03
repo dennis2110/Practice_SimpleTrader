@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SimpleTrader.Domain.Services.TransactionService
+namespace SimpleTrader.Domain.Services.TransactionServices
 {
     public class BuyStockService : IBuyStockService
     {

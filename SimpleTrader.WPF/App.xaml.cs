@@ -6,7 +6,7 @@ using Microsoft.Extensions.Hosting;
 using SimpleTrader.Domain.Models;
 using SimpleTrader.Domain.Services;
 using SimpleTrader.Domain.Services.AuthenticationServices;
-using SimpleTrader.Domain.Services.TransactionService;
+using SimpleTrader.Domain.Services.TransactionServices;
 using SimpleTrader.EntityFramework;
 using SimpleTrader.EntityFramework.Services;
 using SimpleTrader.FinancialModelingPrepAPI;
@@ -36,7 +36,17 @@ namespace SimpleTrader.WPF
         public App()
         {
             _host = CreateHostBuilder().Build();
+
+            //SellTest();
         }
+        private async void SellTest()
+        {
+            var accountService = _host.Services.GetService<IAccountService>();
+            var account = await accountService.GetByUsername("Dennis");
+            var sellStockService = _host.Services.GetService<ISellStockService>();
+            account = await sellStockService.SellStock(account, "AA", 5);
+        }
+
         public static IHostBuilder CreateHostBuilder(string[] args = null)
         {
             return Host.CreateDefaultBuilder(args)
@@ -58,6 +68,7 @@ namespace SimpleTrader.WPF
                     services.AddSingleton<IAccountService, AccountDataService>();
                     services.AddSingleton<IStockPriceService, StockPriceService>();
                     services.AddSingleton<IBuyStockService, BuyStockService>();
+                    services.AddSingleton<ISellStockService, SellStockService>();
                     services.AddSingleton<IMajorIndexService, MajorIndexService>();
 
                     services.AddSingleton<IPasswordHasher, PasswordHasher>();
